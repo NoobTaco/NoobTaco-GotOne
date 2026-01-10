@@ -50,7 +50,7 @@ function Config:BuildSchemas()
     children = {
       {
         type = "about",
-        icon = "Interface\\AddOns\\NoobTaco-GotOne\\Media\\Textures\\logo.png",
+        icon = "Interface\\AddOns\\NoobTaco-GotOne\\Media\\Textures\\noobtaco_gotone_logo.tga",
         title = "|cff33ff99NoobTaco|r GotOne",
         version = version,
         description = "Audio-only collection notifications.\n\nNever miss a collection item again!",
