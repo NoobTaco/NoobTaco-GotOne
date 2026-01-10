@@ -1,12 +1,16 @@
-## Interface: 110000
+## Interface: 120000, 110100, 110007, 110005, 110002
 ## Title: |cff33ff99NoobTaco|r GotOne
 ## Notes: Audio-only collection notifications.
 ## Author: NoobTaco
 ## Version: @project-version@
 ## SavedVariables: NoobTacoGotOneDB
 ## OptionalDeps: NoobTaco-Config, LibSharedMedia-3.0
-## X-Curse-Project-ID: 
-## X-Wago-ID: 
+## X-Curse-Project-ID: 1425469
+## X-Wago-ID: BKpgzq6E
+## X-GitHub-Project: NoobTaco/NoobTaco-GotOne
+## X-GitHub-Repository: https://github.com/NoobTaco/NoobTaco-GotOne
+## X-Website: https://github.com/NoobTaco/NoobTaco-GotOne
+## X-Feedback-Url: https://github.com/NoobTaco/NoobTaco-GotOne/issues 
 
 Libraries\LibSharedMedia-3.0\lib.xml
 Libraries\NoobTaco-Config\Load.xml
