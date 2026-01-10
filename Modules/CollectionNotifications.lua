@@ -114,7 +114,7 @@ end
 local CollectionNotifications = CreateFrame("Frame")
 
 -- Pet collection notification
-local function OnNewPet(self, event, petGUID)
+local function OnNewPet(self, _, petGUID)
   if GetSetting("newPet") and petGUID then
     -- The NEW_PET_ADDED event provides a pet GUID, not a species ID
     -- We need to get the species ID from the pet GUID first
@@ -152,7 +152,7 @@ local function OnNewPet(self, event, petGUID)
 end
 
 -- Mount collection notification
-local function OnNewMount(self, event, mountID)
+local function OnNewMount(self, _, mountID)
   if GetSetting("newMount") and mountID then
     local name = C_MountJournal.GetMountInfoByID(mountID)
 
@@ -168,7 +168,7 @@ local function OnNewMount(self, event, mountID)
 end
 
 -- Toy collection notification
-local function OnNewToy(self, event, itemID)
+local function OnNewToy(self, _, itemID)
   if GetSetting("newToy") and itemID then
     local name = C_ToyBox.GetToyInfo(itemID)
 
@@ -185,7 +185,7 @@ end
 
 -- Transmog collection notification
 -- Uses the proper TRANSMOG_COLLECTION_SOURCE_ADDED event (thanks to All the Things addon for the reference!)
-local function OnTransmogCollected(self, event, sourceID)
+local function OnTransmogCollected(self, _, sourceID)
   if not GetSetting("newTransmog") then
     return
   end
@@ -259,7 +259,7 @@ CollectionNotifications:SetScript("OnEvent", function(self, event, ...)
 end)
 
 -- Initialize on addon loaded
-local function OnAddonLoaded(self, event, loadedAddonName)
+local function OnAddonLoaded(self, _, loadedAddonName)
   if loadedAddonName == addonName then
     InitializeSettings()
     RegisterEvents()
