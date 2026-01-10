@@ -16,3 +16,6 @@ Libraries\LibSharedMedia-3.0\lib.xml
 Libraries\NoobTaco-Config\Load.xml
 
 Core.lua
+
+Media\Media.lua
+Modules\CollectionNotifications.lua
