@@ -1,0 +1,21 @@
+package-as: NoobTaco-GotOne
+enable-nolib-creation: no
+license-output: LICENSE
+
+externals:
+  Libraries/NoobTaco-Config:
+    url: https://github.com/NoobTaco/NoobTaco-Config
+  Libraries/LibSharedMedia-3.0:
+    url: https://github.com/Jaliborc/LibSharedMedia-3.0
+
+ignore:
+  - .git
+  - .github
+  - .vscode
+  - .luacheckrc
+  - .gitignore
+  - CHANGELOG.md
+  - README.md
+  - TODO.md
+  - docs
+  - tests
