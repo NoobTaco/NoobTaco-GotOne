@@ -5,7 +5,8 @@ globals = {
     "SLASH_NTCOLLECTION2",
     "SLASH_NTGOTONE1",
     "SLASH_NTGOTONE2",
-    "NoobTacoGotOne"
+    "NoobTacoGotOne",
+    "SlashCmdList"
 }
 read_globals = {
     "LibStub",
@@ -26,7 +27,7 @@ read_globals = {
     "C_ToyBox",
     "C_TransmogCollection",
     "C_Item",
-    "SlashCmdList",
+    "C_Timer",
     "print",
     "pairs",
     "ipairs",
@@ -46,7 +47,7 @@ read_globals = {
 
 -- Exclude test files, installed rock dependencies, and vendored libraries
 exclude_files = {
-    "Tests/**", 
+    "Tests/**",
     ".luarocks/**",
     ".github/**",
     "Libraries/**"
@@ -58,7 +59,7 @@ max_line_length = 200
 -- Suppress specific warnings
 -- We have fixed most shadownig and unused vars, so this list is minimal.
 ignore = {
-    "212/self",         -- Methods defined with : implicitly have self, but we might not use it.
-    "212/_",            -- Allow underscore as unused argument
-    "211/_",            -- Allow underscore as unused variable
+    "212/self", -- Methods defined with : implicitly have self, but we might not use it.
+    "212/_",    -- Allow underscore as unused argument
+    "211/_",    -- Allow underscore as unused variable
 }
