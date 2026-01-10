@@ -5,6 +5,10 @@
 ## Version: @project-version@
 ## SavedVariables: NoobTacoGotOneDB
 ## OptionalDeps: NoobTaco-Config, LibSharedMedia-3.0
+## IconTexture: Interface\AddOns\NoobTaco-GotOne\Media\Textures\logo
+## AddonCompartmentFunc: NoobTacoGotOne_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: NoobTacoGotOne_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: NoobTacoGotOne_OnAddonCompartmentLeave
 ## X-Curse-Project-ID: 1425469
 ## X-Wago-ID: BKpgzq6E
 ## X-GitHub-Project: NoobTaco/NoobTaco-GotOne

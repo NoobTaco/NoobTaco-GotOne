@@ -1,6 +1,10 @@
 # NoobTaco GotOne Changelog
 
 ## [Unreleased]
+### Added
+- **Addon Logo**: Added addon icon for the addon compartment and minimap display.
+- **Addon Compartment Integration**: Added support for the addon drawer with left-click to open config and right-click to toggle notifications.
+
 ### Fixed
 - **Media Widget Audio Preview**: Fixed sound preview button to use the correct file path instead of the sound name.
 - **Media Widget onChange**: Added onChange callback support for media dropdowns to trigger live updates.
