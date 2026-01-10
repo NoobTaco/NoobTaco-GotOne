@@ -4,6 +4,8 @@
 ### Added
 - **Addon Logo**: Added addon icon for the addon compartment and minimap display.
 - **Addon Compartment Integration**: Added support for the addon drawer with left-click to open config and right-click to toggle notifications.
+- **Collections Category**: Added localized category entries so addon shows under "Collections" in WoW.
+- **Theme Integration**: All chat output now uses NoobTaco-Config library theme system with tokens (`|chighlight|`, `|csuccess|`, `|cerror|`, `|cinfo|`).
 
 ### Fixed
 - **Media Widget Audio Preview**: Fixed sound preview button to use the correct file path instead of the sound name.

@@ -1,11 +1,11 @@
 ## Interface: 120000, 110100, 110007, 110005, 110002
-## Title: |cff33ff99NoobTaco|r GotOne
+## Title: |cFFD78144NoobTaco|r GotOne
 ## Notes: Audio-only collection notifications.
 ## Author: NoobTaco
 ## Version: @project-version@
 ## SavedVariables: NoobTacoGotOneDB
 ## OptionalDeps: NoobTaco-Config, LibSharedMedia-3.0
-## IconTexture: Interface\AddOns\NoobTaco-GotOne\Media\Textures\logo
+## IconTexture: Interface\AddOns\NoobTaco-GotOne\Media\Textures\logo.png
 ## AddonCompartmentFunc: NoobTacoGotOne_OnAddonCompartmentClick
 ## AddonCompartmentFuncOnEnter: NoobTacoGotOne_OnAddonCompartmentEnter
 ## AddonCompartmentFuncOnLeave: NoobTacoGotOne_OnAddonCompartmentLeave
@@ -14,7 +14,18 @@
 ## X-GitHub-Project: NoobTaco/NoobTaco-GotOne
 ## X-GitHub-Repository: https://github.com/NoobTaco/NoobTaco-GotOne
 ## X-Website: https://github.com/NoobTaco/NoobTaco-GotOne
-## X-Feedback-Url: https://github.com/NoobTaco/NoobTaco-GotOne/issues 
+## X-Feedback-Url: https://github.com/NoobTaco/NoobTaco-GotOne/issues
+## Category-enUS: Collections
+## Category-deDE: Sammlungen
+## Category-esES: Colecciones
+## Category-esMX: Colecciones
+## Category-itIT: Collezioni
+## Category-frFR: Collections
+## Category-ptBR: Coleções
+## Category-ruRU: Коллекции
+## Category-koKR: 수집
+## Category-zhCN: 收藏
+## Category-zhTW: 收藏
 
 Libraries\LibSharedMedia-3.0\lib.xml
 Libraries\NoobTaco-Config\Load.xml

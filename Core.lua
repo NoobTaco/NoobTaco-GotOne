@@ -1,6 +1,24 @@
 local addonName, addon = ...
 addon.L = {}
 
+-- Access the config library for theming
+local Lib = LibStub and LibStub("NoobTaco-Config-1.0", true)
+
+-------------------------------------------------------------------------------
+-- Themed Print Helper
+-------------------------------------------------------------------------------
+local function Print(msg)
+  if Lib and Lib.Theme and Lib.Theme.ProcessText then
+    print(Lib.Theme:ProcessText(msg))
+  else
+    -- Fallback if library not loaded yet
+    print(msg:gsub("|c%w+|", ""):gsub("|r", ""))
+  end
+end
+
+-- Export for other modules
+addon.Print = Print
+
 -------------------------------------------------------------------------------
 -- Addon Compartment Integration
 -------------------------------------------------------------------------------
@@ -15,19 +33,32 @@ function NoobTacoGotOne_OnAddonCompartmentClick(addonName, buttonName)
     if NoobTacoGotOneDB and NoobTacoGotOneDB.CollectionNotifications then
       local current = NoobTacoGotOneDB.CollectionNotifications.enabled
       NoobTacoGotOneDB.CollectionNotifications.enabled = not current
-      local status = (not current) and "|cff00ff00Enabled|r" or "|cffff0000Disabled|r"
-      print("|cff33ff99NoobTaco|r GotOne: Collection Notifications " .. status)
+      local status = (not current) and "|csuccess|Enabled|r" or "|cerror|Disabled|r"
+      Print("|chighlight|NoobTaco|r GotOne: Collection Notifications " .. status)
     end
   end
 end
 
 function NoobTacoGotOne_OnAddonCompartmentEnter(addonName, menuButtonFrame)
+  local title, tip1, tip2, tip3
+  if Lib and Lib.Theme and Lib.Theme.ProcessText then
+    title = Lib.Theme:ProcessText("|chighlight|NoobTaco|r GotOne")
+    tip1 = Lib.Theme:ProcessText("Audio-only collection notifications")
+    tip2 = Lib.Theme:ProcessText("Left-click: Open configuration")
+    tip3 = Lib.Theme:ProcessText("Right-click: Toggle notifications")
+  else
+    title = "|cffD78144NoobTaco|r GotOne"
+    tip1 = "Audio-only collection notifications"
+    tip2 = "Left-click: Open configuration"
+    tip3 = "Right-click: Toggle notifications"
+  end
+
   GameTooltip:SetOwner(menuButtonFrame, "ANCHOR_LEFT")
-  GameTooltip:SetText("|cff33ff99NoobTaco|r GotOne", 1, 1, 1)
-  GameTooltip:AddLine("Audio-only collection notifications", 0.7, 0.7, 0.7)
+  GameTooltip:SetText(title, 1, 1, 1)
+  GameTooltip:AddLine(tip1, 0.7, 0.7, 0.7)
   GameTooltip:AddLine(" ", 1, 1, 1)
-  GameTooltip:AddLine("Left-click: Open configuration", 0.7, 0.7, 0.7)
-  GameTooltip:AddLine("Right-click: Toggle notifications", 0.7, 0.7, 0.7)
+  GameTooltip:AddLine(tip2, 0.7, 0.7, 0.7)
+  GameTooltip:AddLine(tip3, 0.7, 0.7, 0.7)
   GameTooltip:Show()
 end
 
@@ -42,7 +73,7 @@ local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, name)
   if name == addonName then
-    print(addonName .. " loaded.")
+    Print("|chighlight|NoobTaco|r GotOne loaded.")
     self:UnregisterEvent(event)
   end
 end)

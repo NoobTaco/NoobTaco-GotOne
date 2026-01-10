@@ -1,10 +1,16 @@
--- NoobTaco-GotOne Collection Notifications Module
--- Provides audio notifications for various collection-related events in World of Warcraft
--- Author: NoobTaco
--- Version: @project-version@
-
 local addonName, addon = ...
 local LSM = LibStub("LibSharedMedia-3.0")
+local Lib = LibStub("NoobTaco-Config-1.0", true)
+
+-- Themed print helper
+local function Print(msg)
+  if Lib and Lib.Theme and Lib.Theme.ProcessText then
+    print(Lib.Theme:ProcessText(msg))
+  else
+    -- Fallback: strip tokens if library not loaded
+    print(msg:gsub("|c%w+|", ""):gsub("|r", ""))
+  end
+end
 
 -- Cooldown tracking
 local lastSoundTime = 0
@@ -32,7 +38,7 @@ local function InitializeSettings()
 
   if not NoobTacoGotOneDB.CollectionNotifications then
     NoobTacoGotOneDB.CollectionNotifications = {}
-    print("|cff00ff00NoobTaco-GotOne|r: Creating new CollectionNotifications settings table")
+    Print("|chighlight|NoobTaco|r GotOne: Creating new CollectionNotifications settings table")
   end
 
   -- Set defaults for any missing values
@@ -60,7 +66,7 @@ local function InitializeSettings()
   end
 
   if #changedSettings > 0 then
-    print("|cff00ff00NoobTaco-GotOne|r: Initialized default values for: " .. table.concat(changedSettings, ", "))
+    Print("|chighlight|NoobTaco|r GotOne: Initialized default values for: " .. table.concat(changedSettings, ", "))
   end
 end
 
@@ -128,7 +134,7 @@ local function OnNewPet(self, _, petGUID)
       if numCollected and numCollected <= 1 then
         PlayNotificationSound("soundPet")
         if GetSetting("showMessages") then
-          print(string.format("|cff00ff00NoobTaco-GotOne|r: New pet species collected: |cff00ff00%s|r", name))
+          Print(string.format("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|%s|r", name))
         end
       end
     elseif speciesID then
@@ -143,7 +149,7 @@ local function OnNewPet(self, _, petGUID)
         if numCollected and numCollected <= 1 then
           PlayNotificationSound("soundPet")
           if GetSetting("showMessages") then
-            print(string.format("|cff00ff00NoobTaco-GotOne|r: New pet species collected: |cff00ff00%s|r", speciesName))
+            Print(string.format("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|%s|r", speciesName))
           end
         end
       end
@@ -161,7 +167,7 @@ local function OnNewMount(self, _, mountID)
       -- Unlike pets which can have duplicates, mounts are unique - you either have it or you don't
       PlayNotificationSound("soundMount")
       if GetSetting("showMessages") then
-        print(string.format("|cff00ff00NoobTaco-GotOne|r: New mount collected: |cff00ff00%s|r", name))
+        Print(string.format("|chighlight|NoobTaco|r GotOne: New mount collected: |csuccess|%s|r", name))
       end
     end
   end
@@ -177,7 +183,7 @@ local function OnNewToy(self, _, itemID)
       -- Similar to mounts, toys are unique - you either have it or you don't
       PlayNotificationSound("soundToy")
       if GetSetting("showMessages") then
-        print(string.format("|cff00ff00NoobTaco-GotOne|r: New toy collected: |cff00ff00%s|r", name))
+        Print(string.format("|chighlight|NoobTaco|r GotOne: New toy collected: |csuccess|%s|r", name))
       end
     end
   end
@@ -207,11 +213,11 @@ local function OnTransmogCollected(self, _, sourceID)
       if sourceInfo and sourceInfo.itemID and sourceInfo.itemID > 0 then
         local itemName = C_Item.GetItemNameByID(sourceInfo.itemID)
         if itemName then
-          displayText = string.format("New transmog collected: |cff00ff00%s|r", itemName)
+          displayText = string.format("New transmog collected: |csuccess|%s|r", itemName)
         end
       end
 
-      print(string.format("|cff00ff00NoobTaco-GotOne|r: %s", displayText))
+      Print(string.format("|chighlight|NoobTaco|r GotOne: %s", displayText))
     end
   end
 end
@@ -302,49 +308,49 @@ SlashCmdList["NTCOLLECTION"] = function(msg)
   local args = string.lower(msg or "")
 
   if args == "test" then
-    print("|cff00ff00NoobTaco-GotOne|r Collection Notifications: Testing all sounds...")
+    Print("|chighlight|NoobTaco|r GotOne: Testing all sounds...")
     PlayNotificationSound("soundPet", true)
     C_Timer.After(1, function() PlayNotificationSound("soundMount", true) end)
     C_Timer.After(2, function() PlayNotificationSound("soundToy", true) end)
     C_Timer.After(3, function() PlayNotificationSound("soundTransmog", true) end)
   elseif args == "testpet" then
-    print("|cff00ff00NoobTaco-GotOne|r Testing pet notification...")
+    Print("|chighlight|NoobTaco|r GotOne: Testing pet notification...")
     PlayNotificationSound("soundPet", true)
     if GetSetting("showMessages") then
-      print("|cff00ff00NoobTaco-GotOne|r: New pet species collected: |cff00ff00Test Pet|r")
+      Print("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|Test Pet|r")
     end
   elseif args == "testmount" then
-    print("|cff00ff00NoobTaco-GotOne|r Testing mount notification...")
+    Print("|chighlight|NoobTaco|r GotOne: Testing mount notification...")
     PlayNotificationSound("soundMount", true)
     if GetSetting("showMessages") then
-      print("|cff00ff00NoobTaco-GotOne|r: New mount collected: |cff00ff00Test Mount|r")
+      Print("|chighlight|NoobTaco|r GotOne: New mount collected: |csuccess|Test Mount|r")
     end
   elseif args == "testtoy" then
-    print("|cff00ff00NoobTaco-GotOne|r Testing toy notification...")
+    Print("|chighlight|NoobTaco|r GotOne: Testing toy notification...")
     PlayNotificationSound("soundToy", true)
     if GetSetting("showMessages") then
-      print("|cff00ff00NoobTaco-GotOne|r: New toy collected: |cff00ff00Test Toy|r")
+      Print("|chighlight|NoobTaco|r GotOne: New toy collected: |csuccess|Test Toy|r")
     end
   elseif args == "testtransmog" then
-    print("|cff00ff00NoobTaco-GotOne|r Testing transmog notification...")
+    Print("|chighlight|NoobTaco|r GotOne: Testing transmog notification...")
     PlayNotificationSound("soundTransmog", true)
     if GetSetting("showMessages") then
-      print("|cff00ff00NoobTaco-GotOne|r: New transmog collected: |cff00ff00Test Transmog Item|r")
+      Print("|chighlight|NoobTaco|r GotOne: New transmog collected: |csuccess|Test Transmog Item|r")
     end
   elseif args == "status" then
-    print("|cff00ff00NoobTaco-GotOne|r Collection Notifications Status:")
-    print("  Enabled: " .. (GetSetting("enabled") and "|cff00ff00Yes|r" or "|cffff0000No|r"))
-    print("  Pets: " .. (GetSetting("newPet") and "|cff00ff00Yes|r" or "|cffff0000No|r"))
-    print("  Mounts: " .. (GetSetting("newMount") and "|cff00ff00Yes|r" or "|cffff0000No|r"))
-    print("  Toys: " .. (GetSetting("newToy") and "|cff00ff00Yes|r" or "|cffff0000No|r"))
-    print("  Transmog: " .. (GetSetting("newTransmog") and "|cff00ff00Yes|r" or "|cffff0000No|r"))
+    Print("|chighlight|NoobTaco|r GotOne Status:")
+    Print("  Enabled: " .. (GetSetting("enabled") and "|csuccess|Yes|r" or "|cerror|No|r"))
+    Print("  Pets: " .. (GetSetting("newPet") and "|csuccess|Yes|r" or "|cerror|No|r"))
+    Print("  Mounts: " .. (GetSetting("newMount") and "|csuccess|Yes|r" or "|cerror|No|r"))
+    Print("  Toys: " .. (GetSetting("newToy") and "|csuccess|Yes|r" or "|cerror|No|r"))
+    Print("  Transmog: " .. (GetSetting("newTransmog") and "|csuccess|Yes|r" or "|cerror|No|r"))
   else
-    print("|cff00ff00NoobTaco-GotOne|r Collection Notifications commands:")
-    print("  |cffffff00/ntgo test|r - Test all notification sounds")
-    print("  |cffffff00/ntgo testpet|r - Test pet notification")
-    print("  |cffffff00/ntgo testmount|r - Test mount notification")
-    print("  |cffffff00/ntgo testtoy|r - Test toy notification")
-    print("  |cffffff00/ntgo testtransmog|r - Test transmog notification")
-    print("  |cffffff00/ntgo status|r - Show current settings")
+    Print("|chighlight|NoobTaco|r GotOne commands:")
+    Print("  |cinfo|/ntgo test|r - Test all notification sounds")
+    Print("  |cinfo|/ntgo testpet|r - Test pet notification")
+    Print("  |cinfo|/ntgo testmount|r - Test mount notification")
+    Print("  |cinfo|/ntgo testtoy|r - Test toy notification")
+    Print("  |cinfo|/ntgo testtransmog|r - Test transmog notification")
+    Print("  |cinfo|/ntgo status|r - Show current settings")
   end
 end
