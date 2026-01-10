@@ -19,3 +19,4 @@ Core.lua
 
 Media\Media.lua
 Modules\CollectionNotifications.lua
+Config.lua
