@@ -250,7 +250,7 @@ function Theme:ProcessText(text)
 
   -- Replace |cTOKEN| with |cAARRGGBB|
   -- We use a more specific pattern to ensure we only match our tokens
-  return text:gsub("|c([^|%s]+)|", function(token)
+  return (text:gsub("|c([^|%s]+)|", function(token)
     -- If it's already a hex color (8 chars), leave it alone
     if #token == 8 and token:find("^%x+$") then
       return "|c" .. token
@@ -263,7 +263,7 @@ function Theme:ProcessText(text)
 
     -- Fallback: return original if token not found or is default white
     return "|c" .. token .. "|"
-  end)
+  end))
 end
 
 -- Weak table to track objects that need theme updates

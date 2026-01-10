@@ -1,6 +1,6 @@
 # NoobTaco GotOne Changelog
 
-## [Unreleased]
+## [1.0.0] - 2026-01-10
 ### Added
 - **Addon Logo**: Added addon icon for the addon compartment and minimap display.
 - **Addon Compartment Integration**: Added support for the addon drawer with left-click to open config and right-click to toggle notifications.
@@ -13,18 +13,15 @@
 - **Sound Options Refresh**: Schemas now rebuild on render to ensure fresh LibSharedMedia sound options.
 
 ### Changed
-- **Library Update**: Updated `NoobTaco-Config` to v1.0.3 to resolve library loading conflicts and fix checkbox sizing.
+- **Library Update**: Updated `NoobTaco-Config` to v1.2.0 to resolve library loading conflicts and fix checkbox sizing.
 
-
-
-### Added
-- Initial project setup.
+### Initial Setup
 - Core addon structure and configuration.
 - LibSharedMedia-3.0 and NoobTaco-Config integration.
 - Imported Collection Notifications module from NoobTacoUI.
 - Added collection-related sound files.
-- Implemented Configuration Menu (Config.lua) using NoobTaco-Config.
-  - Added Audio Settings with Global Toggle.
-  - Added per-collection type settings (Pet, Mount, Toy, Transmog).
-  - Integrated LibSharedMedia for sound selection.
-  - Implemented live settings updates (no reload required).
+- Implemented Configuration Menu (`Config.lua`) using NoobTaco-Config.
+    - Added Audio Settings with Global Toggle.
+    - Added per-collection type settings (Pet, Mount, Toy, Transmog).
+    - Integrated LibSharedMedia for sound selection.
+    - Implemented live settings updates (no reload required).

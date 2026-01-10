@@ -12,7 +12,7 @@ local function Print(msg)
     print(Lib.Theme:ProcessText(msg))
   else
     -- Fallback if library not loaded yet
-    print(msg:gsub("|c%w+|", ""):gsub("|r", ""))
+    print((msg:gsub("|c%w+|", ""):gsub("|r", "")))
   end
 end
 
@@ -22,7 +22,7 @@ addon.Print = Print
 -------------------------------------------------------------------------------
 -- Addon Compartment Integration
 -------------------------------------------------------------------------------
-function NoobTacoGotOne_OnAddonCompartmentClick(addonName, buttonName)
+function NoobTacoGotOne_OnAddonCompartmentClick(_, buttonName)
   if buttonName == "LeftButton" then
     -- Open config panel
     if addon.Config and addon.Config.Toggle then
@@ -39,7 +39,7 @@ function NoobTacoGotOne_OnAddonCompartmentClick(addonName, buttonName)
   end
 end
 
-function NoobTacoGotOne_OnAddonCompartmentEnter(addonName, menuButtonFrame)
+function NoobTacoGotOne_OnAddonCompartmentEnter(_, menuButtonFrame)
   local title, tip1, tip2, tip3
   if Lib and Lib.Theme and Lib.Theme.ProcessText then
     title = Lib.Theme:ProcessText("|chighlight|NoobTaco|r GotOne")
@@ -62,7 +62,7 @@ function NoobTacoGotOne_OnAddonCompartmentEnter(addonName, menuButtonFrame)
   GameTooltip:Show()
 end
 
-function NoobTacoGotOne_OnAddonCompartmentLeave(addonName, menuButtonFrame)
+function NoobTacoGotOne_OnAddonCompartmentLeave(_, _menuButtonFrame)
   GameTooltip:Hide()
 end
 

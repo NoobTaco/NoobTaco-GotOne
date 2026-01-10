@@ -58,8 +58,12 @@ function Config:BuildSchemas()
           { label = "GitHub", url = "https://github.com/NoobTaco/NoobTaco-GotOne" },
         }
       },
-      { type = "header",      label = "Instructions" },
-      { type = "description", text = "This addon plays a sound when you collect a new appearance, mount, pet, or toy.\n\nYou can configure specific sounds for each collection type in the Audio Settings menu." }
+      { type = "header", label = "Instructions" },
+      {
+        type = "description",
+        text = "This addon plays a sound when you collect a new appearance, mount, pet, or toy.\n\n" ..
+            "You can configure specific sounds for each collection type in the Audio Settings menu."
+      }
     }
   }
 
@@ -187,15 +191,34 @@ function Config:RenderContent(parent)
   Lib.Renderer:Render(sectionSchemas[lastSection] or Schemas.SettingsSchema, layout)
 end
 
+function Config:Toggle()
+  -- If we are in the settings menu, just open it
+  if Settings and Settings.OpenToCategory then
+    if self.category then
+      Settings.OpenToCategory(self.category:GetID())
+    else
+      Settings.OpenToCategory("NoobTaco GotOne")
+    end
+  elseif InterfaceOptionsFrame_OpenToCategory then
+    InterfaceOptionsFrame_OpenToCategory("NoobTaco GotOne")
+  end
+end
+
+-- Global helper for macros or other addons
+function NoobTacoGotOne_ToggleSettings()
+  Config:Toggle()
+end
+
 function Config:Initialize()
   self:BuildSchemas()
 
   local canvas = CreateFrame("Frame", nil, UIParent)
   canvas.name = "NoobTaco GotOne"
+  self.canvas = canvas
 
   if Settings and Settings.RegisterCanvasLayoutCategory then
-    local category = Settings.RegisterCanvasLayoutCategory(canvas, "NoobTaco GotOne")
-    Settings.RegisterAddOnCategory(category)
+    self.category = Settings.RegisterCanvasLayoutCategory(canvas, "NoobTaco GotOne")
+    Settings.RegisterAddOnCategory(self.category)
 
     local hasRenderedOnce = false
     local function TryRender()
@@ -230,4 +253,75 @@ end
 -- Initialize on Login to ensure SavedVariables are loaded
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_LOGIN")
-f:SetScript("OnEvent", function() Config:Initialize() end)
+f:SetScript("OnEvent", function()
+  Config:Initialize()
+
+  -- Register Slash Commands
+  SLASH_GOTONE1 = "/ntgotone"
+  SLASH_GOTONE2 = "/ntgo"
+  SlashCmdList["GOTONE"] = function(msg)
+    local args = string.lower(msg or "")
+    if args == "" then
+      Config:Toggle()
+    elseif args == "test" then
+      addon.Print("|chighlight|NoobTaco|r GotOne: Testing all sounds...")
+      if addon.CollectionNotifications then
+        addon.CollectionNotifications.PlayNotificationSound("soundPet", true)
+        C_Timer.After(1, function() addon.CollectionNotifications.PlayNotificationSound("soundMount", true) end)
+        C_Timer.After(2, function() addon.CollectionNotifications.PlayNotificationSound("soundToy", true) end)
+        C_Timer.After(3, function() addon.CollectionNotifications.PlayNotificationSound("soundTransmog", true) end)
+      end
+    elseif args == "testpet" then
+      addon.Print("|chighlight|NoobTaco|r GotOne: Testing pet notification...")
+      if addon.CollectionNotifications then
+        addon.CollectionNotifications.PlayNotificationSound("soundPet", true)
+        if addon.CollectionNotifications.GetSetting("showMessages") then
+          addon.Print("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|Test Pet|r")
+        end
+      end
+    elseif args == "testmount" then
+      addon.Print("|chighlight|NoobTaco|r GotOne: Testing mount notification...")
+      if addon.CollectionNotifications then
+        addon.CollectionNotifications.PlayNotificationSound("soundMount", true)
+        if addon.CollectionNotifications.GetSetting("showMessages") then
+          addon.Print("|chighlight|NoobTaco|r GotOne: New mount collected: |csuccess|Test Mount|r")
+        end
+      end
+    elseif args == "testtoy" then
+      addon.Print("|chighlight|NoobTaco|r GotOne: Testing toy notification...")
+      if addon.CollectionNotifications then
+        addon.CollectionNotifications.PlayNotificationSound("soundToy", true)
+        if addon.CollectionNotifications.GetSetting("showMessages") then
+          addon.Print("|chighlight|NoobTaco|r GotOne: New toy collected: |csuccess|Test Toy|r")
+        end
+      end
+    elseif args == "testtransmog" then
+      addon.Print("|chighlight|NoobTaco|r GotOne: Testing transmog notification...")
+      if addon.CollectionNotifications then
+        addon.CollectionNotifications.PlayNotificationSound("soundTransmog", true)
+        if addon.CollectionNotifications.GetSetting("showMessages") then
+          addon.Print("|chighlight|NoobTaco|r GotOne: New transmog collected: |csuccess|Test Transmog Item|r")
+        end
+      end
+    elseif args == "status" then
+      if addon.CollectionNotifications then
+        local GetSetting = addon.CollectionNotifications.GetSetting
+        addon.Print("|chighlight|NoobTaco|r GotOne Status:")
+        addon.Print("  Enabled: " .. (GetSetting("enabled") and "|csuccess|Yes|r" or "|cerror|No|r"))
+        addon.Print("  Pets: " .. (GetSetting("newPet") and "|csuccess|Yes|r" or "|cerror|No|r"))
+        addon.Print("  Mounts: " .. (GetSetting("newMount") and "|csuccess|Yes|r" or "|cerror|No|r"))
+        addon.Print("  Toys: " .. (GetSetting("newToy") and "|csuccess|Yes|r" or "|cerror|No|r"))
+        addon.Print("  Transmog: " .. (GetSetting("newTransmog") and "|csuccess|Yes|r" or "|cerror|No|r"))
+      end
+    else
+      addon.Print("|chighlight|NoobTaco|r GotOne commands:")
+      addon.Print("  |cinfo|/ntgo|r - Open configuration panel")
+      addon.Print("  |cinfo|/ntgo test|r - Test all notification sounds")
+      addon.Print("  |cinfo|/ntgo testpet|r - Test pet notification")
+      addon.Print("  |cinfo|/ntgo testmount|r - Test mount notification")
+      addon.Print("  |cinfo|/ntgo testtoy|r - Test toy notification")
+      addon.Print("  |cinfo|/ntgo testtransmog|r - Test transmog notification")
+      addon.Print("  |cinfo|/ntgo status|r - Show current settings")
+    end
+  end
+end)

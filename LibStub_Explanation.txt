@@ -1,0 +1,14 @@
+You are completely right to ask this. It exposes a flaw in how the library was structured.
+
+**The "Why":**
+`LibStub:NewLibrary` works correctly in `NoobTaco-Config.lua`. It sees version 99 is already loaded, so when `NoobTacoUI` tries to load version 1, `LibStub` says "No" and returns `nil`. **`NoobTaco-Config.lua` then stops executing.**
+
+**However**, the World of Warcraft client continues down the `.toc` list. It proceeds to load `Renderer.lua` from `NoobTacoUI`.
+The `Renderer.lua` file didn't check if it *should* be loading. It just blindly asked `LibStub` for the library object (which `GotOne` had successfully created) and overwrote all the functions with its old code.
+
+**The Fix:**
+I need to add a "gatekeeper" variable.
+1. `NoobTaco-Config.lua` will set a global flag `NOOBTACO_CONFIG_SHOULD_LOAD` to `true` or `false` depending on if it won the version battle.
+2. `Renderer.lua` (and other modules) will check this flag. If it's `false`, they will stop immediately and not overwrite anything.
+
+I will clean up the debug prints and implement this fix now, so you don't have to worry about this syncing issue again.

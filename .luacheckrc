@@ -6,7 +6,13 @@ globals = {
     "SLASH_NTGOTONE1",
     "SLASH_NTGOTONE2",
     "NoobTacoGotOne",
-    "SlashCmdList"
+    "SlashCmdList",
+    "SLASH_GOTONE1",
+    "SLASH_GOTONE2",
+    "NoobTacoGotOne_ToggleSettings",
+    "NoobTacoGotOne_OnAddonCompartmentClick",
+    "NoobTacoGotOne_OnAddonCompartmentEnter",
+    "NoobTacoGotOne_OnAddonCompartmentLeave"
 }
 read_globals = {
     "LibStub",
@@ -42,7 +48,12 @@ read_globals = {
     "assert",
     "format",
     "date",
-    "time"
+    "time",
+    "C_AddOns",
+    "GetAddOnMetadata",
+    "Settings",
+    "InterfaceOptions_AddCategory",
+    "InterfaceOptionsFrame_OpenToCategory"
 }
 
 -- Exclude test files, installed rock dependencies, and vendored libraries

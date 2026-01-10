@@ -8,7 +8,7 @@ local function Print(msg)
     print(Lib.Theme:ProcessText(msg))
   else
     -- Fallback: strip tokens if library not loaded
-    print(msg:gsub("|c%w+|", ""):gsub("|r", ""))
+    print((msg:gsub("|c%w+|", ""):gsub("|r", "")))
   end
 end
 
@@ -299,58 +299,4 @@ if addon then
     UnregisterEvents = UnregisterEvents,
     PlayNotificationSound = PlayNotificationSound,
   }
-end
-
--- Slash command for testing sounds
-SLASH_NTCOLLECTION1 = "/ntgotone"
-SLASH_NTCOLLECTION2 = "/ntgo"
-SlashCmdList["NTCOLLECTION"] = function(msg)
-  local args = string.lower(msg or "")
-
-  if args == "test" then
-    Print("|chighlight|NoobTaco|r GotOne: Testing all sounds...")
-    PlayNotificationSound("soundPet", true)
-    C_Timer.After(1, function() PlayNotificationSound("soundMount", true) end)
-    C_Timer.After(2, function() PlayNotificationSound("soundToy", true) end)
-    C_Timer.After(3, function() PlayNotificationSound("soundTransmog", true) end)
-  elseif args == "testpet" then
-    Print("|chighlight|NoobTaco|r GotOne: Testing pet notification...")
-    PlayNotificationSound("soundPet", true)
-    if GetSetting("showMessages") then
-      Print("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|Test Pet|r")
-    end
-  elseif args == "testmount" then
-    Print("|chighlight|NoobTaco|r GotOne: Testing mount notification...")
-    PlayNotificationSound("soundMount", true)
-    if GetSetting("showMessages") then
-      Print("|chighlight|NoobTaco|r GotOne: New mount collected: |csuccess|Test Mount|r")
-    end
-  elseif args == "testtoy" then
-    Print("|chighlight|NoobTaco|r GotOne: Testing toy notification...")
-    PlayNotificationSound("soundToy", true)
-    if GetSetting("showMessages") then
-      Print("|chighlight|NoobTaco|r GotOne: New toy collected: |csuccess|Test Toy|r")
-    end
-  elseif args == "testtransmog" then
-    Print("|chighlight|NoobTaco|r GotOne: Testing transmog notification...")
-    PlayNotificationSound("soundTransmog", true)
-    if GetSetting("showMessages") then
-      Print("|chighlight|NoobTaco|r GotOne: New transmog collected: |csuccess|Test Transmog Item|r")
-    end
-  elseif args == "status" then
-    Print("|chighlight|NoobTaco|r GotOne Status:")
-    Print("  Enabled: " .. (GetSetting("enabled") and "|csuccess|Yes|r" or "|cerror|No|r"))
-    Print("  Pets: " .. (GetSetting("newPet") and "|csuccess|Yes|r" or "|cerror|No|r"))
-    Print("  Mounts: " .. (GetSetting("newMount") and "|csuccess|Yes|r" or "|cerror|No|r"))
-    Print("  Toys: " .. (GetSetting("newToy") and "|csuccess|Yes|r" or "|cerror|No|r"))
-    Print("  Transmog: " .. (GetSetting("newTransmog") and "|csuccess|Yes|r" or "|cerror|No|r"))
-  else
-    Print("|chighlight|NoobTaco|r GotOne commands:")
-    Print("  |cinfo|/ntgo test|r - Test all notification sounds")
-    Print("  |cinfo|/ntgo testpet|r - Test pet notification")
-    Print("  |cinfo|/ntgo testmount|r - Test mount notification")
-    Print("  |cinfo|/ntgo testtoy|r - Test toy notification")
-    Print("  |cinfo|/ntgo testtransmog|r - Test transmog notification")
-    Print("  |cinfo|/ntgo status|r - Show current settings")
-  end
 end
