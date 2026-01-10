@@ -38,7 +38,7 @@ Most collection addons rely on heavy databases and complex UI overlays that clut
 ---
 
 ## Installation
-1. Download the latest release from [CurseForge](https://www.curseforge.com/wow/addons/noobtaco-gotone) or [Wago.io](https://wago.io/BKpgzq6E).
+1. Download the latest release from [CurseForge](https://www.curseforge.com/wow/addons/noobtaco-gotone) or [Wago.io](https://addons.wago.io/addons/noobtaco-gotone).
 2. Extract the folder into your `Interface/AddOns` directory.
 
 ---
