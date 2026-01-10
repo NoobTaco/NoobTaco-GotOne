@@ -1,34 +1,25 @@
-std = "lua51"
+std = "lua51+wow"
+globals = {
+    "NoobTacoGotOneDB",
+    "SLASH_NTCOLLECTION1",
+    "SLASH_NTCOLLECTION2",
+    "SLASH_NTGOTONE1",
+    "SLASH_NTGOTONE2",
+    "NoobTacoGotOne"
+}
 read_globals = {
-    "CreateFrame",
-    "UIParent",
-    "GameFontNormal",
-    "GameFontHighlight",
-    "GameFontHighlightSmall",
-    "GameFontNormalLarge",
-    "GameTooltip",
-    "PlaySoundFile",
-    "UIDropDownMenu_Initialize",
-    "UIDropDownMenu_CreateInfo",
-    "UIDropDownMenu_AddButton",
-    "UIDropDownMenu_SetSelectedValue",
-    "UIDropDownMenu_SetText",
-    "UIDropDownMenu_SetWidth",
-    "Settings",
-    "PixelUtil",
-    "C_Timer",
+    "LibStub",
     "wipe",
     "strtrim",
-    "strmatch",
-    "GetBuildInfo",
-    "LibStub"
+    "strmatch"
 }
 
--- Exclude test files and installed rock dependencies
+-- Exclude test files, installed rock dependencies, and vendored libraries
 exclude_files = {
     "Tests/**", 
     ".luarocks/**",
-    ".github/**"
+    ".github/**",
+    "Libraries/**"
 }
 
 -- Slightly relaxed line length
