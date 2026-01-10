@@ -14,8 +14,8 @@ addon.Config = Config
 local function GetSoundOptions()
   local options = {}
   -- Fetch sounds from LibSharedMedia
-  for name, _ in pairs(LSM:HashTable("sound")) do
-    table.insert(options, { label = name, value = name })
+  for name, path in pairs(LSM:HashTable("sound")) do
+    table.insert(options, { label = name, value = name, path = path })
   end
   -- Sort alphabetically
   table.sort(options, function(a, b) return a.label < b.label end)
@@ -103,8 +103,8 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newPet",   type = "checkbox", label = "Pets",     width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
-              { id = "soundPet", type = "media",    default = "NT_Pet", options = soundOptions }
+              { id = "newPet",   type = "checkbox", label = "Pets",     width = 170,            labelWidth = 130,              default = true, onChange = RefreshRegistration },
+              { id = "soundPet", type = "media",    default = "NT_Pet", options = soundOptions, onChange = RefreshRegistration }
             }
           },
 
@@ -112,8 +112,8 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newMount",   type = "checkbox", label = "Mounts",                width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
-              { id = "soundMount", type = "media",    default = "NT_Mount_Collection", options = soundOptions }
+              { id = "newMount",   type = "checkbox", label = "Mounts",                width = 170,            labelWidth = 130,              default = true, onChange = RefreshRegistration },
+              { id = "soundMount", type = "media",    default = "NT_Mount_Collection", options = soundOptions, onChange = RefreshRegistration }
             }
           },
 
@@ -121,8 +121,8 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newToy",   type = "checkbox", label = "Toys",                width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
-              { id = "soundToy", type = "media",    default = "NT_Toy_Collection", options = soundOptions }
+              { id = "newToy",   type = "checkbox", label = "Toys",                width = 170,            labelWidth = 130,              default = true, onChange = RefreshRegistration },
+              { id = "soundToy", type = "media",    default = "NT_Toy_Collection", options = soundOptions, onChange = RefreshRegistration }
             }
           },
 
@@ -130,8 +130,8 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newTransmog",   type = "checkbox", label = "Transmog",      width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
-              { id = "soundTransmog", type = "media",    default = "NT_Transmog", options = soundOptions }
+              { id = "newTransmog",   type = "checkbox", label = "Transmog",      width = 170,            labelWidth = 130,              default = true, onChange = RefreshRegistration },
+              { id = "soundTransmog", type = "media",    default = "NT_Transmog", options = soundOptions, onChange = RefreshRegistration }
             }
           },
         }
@@ -151,6 +151,9 @@ function Config:RenderContent(parent)
 
   -- Initialize State with DB
   Lib.State:Initialize(NoobTacoGotOneDB.CollectionNotifications)
+
+  -- Rebuild schemas each time to ensure fresh LSM sound options
+  self:BuildSchemas()
 
   local Schemas = Config
 

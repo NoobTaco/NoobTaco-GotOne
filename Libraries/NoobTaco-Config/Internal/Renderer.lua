@@ -946,6 +946,7 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
             State:SetValue(item.id, opt.value)
             frame.Text:SetText(opt.label)
             frame.Popup:Hide()
+            if item.onChange then item.onChange(opt.value) end
           end)
 
           -- Setup Play Button
@@ -961,8 +962,9 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
           end
 
           playBtn:SetScript("OnClick", function()
-            if opt.value then
-              PlaySoundFile(opt.value, "Master")
+            local soundFile = opt.path or opt.value
+            if soundFile then
+              PlaySoundFile(soundFile, "Master")
             end
           end)
 
