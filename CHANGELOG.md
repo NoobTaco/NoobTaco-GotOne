@@ -1,6 +1,10 @@
 # NoobTaco GotOne Changelog
 
 ## [Unreleased]
+### Changed
+- **Library Update**: Updated `NoobTaco-Config` to v1.0.3 to resolve library loading conflicts and fix checkbox sizing.
+
+
 
 ### Added
 - Initial project setup.

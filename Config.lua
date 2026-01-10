@@ -103,7 +103,7 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newPet",   type = "checkbox", label = "Pets",     default = true,        onChange = RefreshRegistration },
+              { id = "newPet",   type = "checkbox", label = "Pets",     width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
               { id = "soundPet", type = "media",    default = "NT_Pet", options = soundOptions }
             }
           },
@@ -112,7 +112,7 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newMount",   type = "checkbox", label = "Mounts",                default = true,        onChange = RefreshRegistration },
+              { id = "newMount",   type = "checkbox", label = "Mounts",                width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
               { id = "soundMount", type = "media",    default = "NT_Mount_Collection", options = soundOptions }
             }
           },
@@ -121,7 +121,7 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newToy",   type = "checkbox", label = "Toys",                default = true,        onChange = RefreshRegistration },
+              { id = "newToy",   type = "checkbox", label = "Toys",                width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
               { id = "soundToy", type = "media",    default = "NT_Toy_Collection", options = soundOptions }
             }
           },
@@ -130,7 +130,7 @@ function Config:BuildSchemas()
           {
             type = "row",
             children = {
-              { id = "newTransmog",   type = "checkbox", label = "Transmog",      default = true,        onChange = RefreshRegistration },
+              { id = "newTransmog",   type = "checkbox", label = "Transmog",      width = 170,           labelWidth = 130, default = true, onChange = RefreshRegistration },
               { id = "soundTransmog", type = "media",    default = "NT_Transmog", options = soundOptions }
             }
           },

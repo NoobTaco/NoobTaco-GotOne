@@ -3,10 +3,15 @@
     Root entry point for the configuration library.
 ]]
 
-local MAJOR, MINOR = "NoobTaco-Config-1.0", 1
+local MAJOR, MINOR = "NoobTaco-Config-1.0", 3
 local Lib, _ = LibStub:NewLibrary(MAJOR, MINOR)
 
-if not Lib then return end
+if not Lib then
+    _G.NOOBTACO_CONFIG_SHOULD_LOAD = false
+    return
+end
+
+_G.NOOBTACO_CONFIG_SHOULD_LOAD = true
 
 -- Initialize internal module references on the library object
 Lib.Schema = Lib.Schema or {}

@@ -1,4 +1,6 @@
 local Lib = LibStub("NoobTaco-Config-1.0")
+if not _G.NOOBTACO_CONFIG_SHOULD_LOAD then return end
+
 local ConfigRenderer = Lib.Renderer
 
 local Theme = Lib.Theme
@@ -760,7 +762,15 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
   if item.label then
     if item.type == "checkbox" or item.type == "slider" then
       frame.rawText = item.label
-      if frame.Text then frame.Text:SetText(Theme:ProcessText(item.label)) end
+      if frame.Text then
+        frame.Text:SetText(Theme:ProcessText(item.label))
+
+        -- Handle Truncation if labelWidth is provided
+        if item.labelWidth then
+          frame.Text:SetWidth(item.labelWidth)
+          frame.Text:SetWordWrap(false)
+        end
+      end
     elseif item.type == "editbox" or item.type == "dropdown" or item.type == "colorpicker" or item.type == "media" then
       if frame.Label then frame.Label:SetText(Theme:ProcessText(item.label)) end
     end
@@ -1091,6 +1101,14 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
       frame:SetSize(cursor.maxWidth,
         totalHeight)
     end
+  elseif item.type == "checkbox" or item.type == "colorpicker" then
+    local w, h = 30, 30
+    -- Explicitly ignore item.width for frame size (it is used for layout)
+    if PixelUtil then
+      PixelUtil.SetSize(frame, w, h)
+    else
+      frame:SetSize(w, h)
+    end
   elseif item.type == "media" then
     local w, h = 180, 26
     if item.width then w = item.width end
@@ -1227,9 +1245,13 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
   else
     -- Basic sizing
     local w, h = 150, 26
-    if item.type == "checkbox" or item.type == "colorpicker" then w, h = 30, 30 end
-    if item.type == "editbox" then w = 200 end
-    if item.width then w = item.width end
+    if item.type == "checkbox" or item.type == "colorpicker" then
+      w, h = 30, 30
+      -- Do NOT let item.width override w for these types, as it is used for layout reservation only
+    else
+      if item.type == "editbox" then w = 200 end
+      if item.width then w = item.width end
+    end
 
     if PixelUtil then
       PixelUtil.SetSize(frame, w, h)
@@ -1256,13 +1278,21 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
 
   -- 1. Account for side labels (Checkbox, ColorPicker)
   if item.type == "checkbox" and frame.Text then
-    local textWidth = frame.Text:GetStringWidth() or 100
-    if textWidth == 0 then textWidth = 100 end -- Fallback
-    effectiveWidth = frameWidth + textWidth + 5
+    if item.width then
+      effectiveWidth = item.width
+    else
+      local textWidth = frame.Text:GetStringWidth() or 100
+      if textWidth == 0 then textWidth = 100 end -- Fallback
+      effectiveWidth = frameWidth + textWidth + 5
+    end
   elseif item.type == "colorpicker" and frame.Label then
-    local textWidth = frame.Label:GetStringWidth() or 100
-    if textWidth == 0 then textWidth = 100 end -- Fallback
-    effectiveWidth = frameWidth + textWidth + 10
+    if item.width then
+      effectiveWidth = item.width
+    else
+      local textWidth = frame.Label:GetStringWidth() or 100
+      if textWidth == 0 then textWidth = 100 end -- Fallback
+      effectiveWidth = frameWidth + textWidth + 10
+    end
   end
 
   -- 2. Account for top labels (Slider, EditBox, Dropdown, Media)
