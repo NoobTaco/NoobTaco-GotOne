@@ -3,7 +3,7 @@
     Root entry point for the configuration library.
 ]]
 
-local MAJOR, MINOR = "NoobTaco-Config-1.0", 3
+local MAJOR, MINOR = "NoobTaco-Config-1.0", 4
 local Lib, _ = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Lib then

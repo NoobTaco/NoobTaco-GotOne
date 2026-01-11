@@ -1,8 +1,9 @@
 # NoobTaco GotOne Changelog
 
-## [Unreleased]
+## [1.1.0] - 2026-01-11
 ### Changed
 - **Branding**: Re-branded the addon in-game strings and titles to use the split-color Burnt Sienna and Cloud White "NoobTaco Tech Brand Identity". Added visual consistency in the Blizzard Options panel.
+- **Library Update**: Updated `NoobTaco-Config` to v1.3.1 to resolve library loading conflicts and fix checkbox sizing.
 
 
 ## [1.0.0] - 2026-01-10
