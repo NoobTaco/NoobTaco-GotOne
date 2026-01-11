@@ -16,9 +16,9 @@ local function BuildSchemas()
     children = {
       {
         type = "about",
-        icon = Lib.Media .. "\\Textures\\Logo.png", -- Library Logo
+        icon = Lib.Media .. "\\Textures\\noobtaco-config-logo.tga", -- Library Logo
         title = "|chighlight|Config Library|r Showcase",
-        version = "v1.1.0",
+        version = "v1.2.1",
         description =
         "Welcome to the |chighlight|NoobTaco-Config|r showcase. This application demonstrates all available widgets, layout options, and the dynamic theming engine.\n\nUse the sidebar to explore different feature sets. This environment uses a |cinfo|temporary state buffer|r, meaning changes here will not affect your persistent addon settings.",
         links = {

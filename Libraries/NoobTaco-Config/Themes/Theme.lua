@@ -74,22 +74,22 @@ Theme.Presets = {
     }
   },
   NoobTaco = {
-    background = { 0.11, 0.15, 0.23, 0.60 }, -- Charcoal Navy (rgba 27, 38, 59, 0.6)
+    background = { 0.11, 0.15, 0.23, 0.60 }, -- Charcoal Navy (#1B263B)
     header = { 0.84, 0.51, 0.27, 1.00 },     -- Burnt Sienna (#D78144)
-    border = { 0.84, 0.51, 0.27, 0.30 },     -- Burnt Sienna tint (rgba 215, 129, 68, 0.3)
+    border = { 0.84, 0.51, 0.27, 0.30 },     -- Burnt Sienna tint
     text = { 0.97, 0.98, 0.98, 1.00 },       -- Cloud White (#F8F9FA)
-    highlight = { 0.84, 0.51, 0.27, 1.00 },  -- Burnt Sienna
+    highlight = { 0.96, 0.64, 0.38, 1.00 },  -- Golden Hour (#F4A261)
     button = {
       normal = { 0.14, 0.19, 0.29, 1.00 },
-      hover = { 0.20, 0.27, 0.41, 1.00 },
-      selected = { 0.84, 0.51, 0.27, 1.00 },
+      hover = { 0.96, 0.64, 0.38, 1.00 },    -- Golden Hour
+      selected = { 0.84, 0.51, 0.27, 1.00 }, -- Burnt Sienna
       text = { 0.97, 0.98, 0.98, 1.00 },
     },
     alert = {
       warning = { 0.96, 0.64, 0.38, 1.00 }, -- Specular Highlight color
       error = { 0.80, 0.30, 0.25, 1.00 },
       success = { 0.40, 0.70, 0.50, 1.00 },
-      info = { 0.35, 0.55, 0.85, 1.00 },
+      info = { 0.96, 0.64, 0.38, 1.00 }, -- Golden Hour
     }
   }
 }

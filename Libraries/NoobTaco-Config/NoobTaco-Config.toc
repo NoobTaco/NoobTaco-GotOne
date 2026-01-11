@@ -1,9 +1,9 @@
 ## Interface: 120001, 120000, 110207, 110107, 50503, 50500, 40402, 38000, 11508, 11507
-## Title: Lib: NoobTaco-Config
+## Title: Lib: |cFFD78144NoobTaco|r-Config
 ## Notes: Standalone Configuration Library
 ## Author: NoobTaco
 ## Version: @project-version@
-## IconTexture: Interface\AddOns\NoobTaco-Config\Media\Textures\Logo.png
+## IconTexture: Interface\AddOns\NoobTaco-Config\Media\Textures\noobtaco-config-logo.tga
 ## X-GitHub-Project: NoobTaco/NoobTaco-Config
 ## X-GitHub-Repository: https://github.com/NoobTaco/NoobTaco-Config
 ## X-GitHub-Repository-Type: library

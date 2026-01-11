@@ -1,10 +1,24 @@
 # Changelog
 
+## [1.3.0] - 2026-01-11
+### Changed
+- **Branding**: Updated the `NoobTaco` theme colors to the official "NoobTaco Tech Brand Identity" palette (Burnt Sienna, Charcoal Navy, Golden Hour).
+
+### Fixed
+- **ProcessText Return Value**: Forced a single return value from `Theme:ProcessText` to prevent trailing digits (extra return values) from being appended to print output.
+
+
+## [1.2.1] - 2026-01-10
+### Fixed
+- **Media Widget onChange**: Added missing `onChange` callback support when selecting items from the media dropdown.
+- **Media Preview Path**: Fixed sound preview to use `opt.path` (the actual file path) instead of just `opt.value` (the sound name), ensuring sounds play correctly.
+
 ## [1.2.0] - 2026-01-10
 ### Added
+- **Load Hardening:** Implemented a "Gatekeeper" flag (`NOOBTACO_CONFIG_SHOULD_LOAD`) to prevent older versions of the library (embedded in other addons) from overwriting newer, active versions.
 - **README Overhaul**: Completely redesigned the `README.md` with a more visual, structural, and professional layout geared towards GitHub, CurseForge, and Wago.
 - **Embedded Screenshots**: Integrated high-quality screenshots directly into the repository and documentation to showcase all library widgets and themes.
-- **Logo Asset Management**: Relocated the library logo to `Media/Textures/Logo.png` and updated the `.toc` file to follow Blizzard's asset path requirements.
+- **Logo Asset Management**: Relocated the library logo to `Media/Textures/` and updated the `.toc` file to follow Blizzard's asset path requirements.
 - **Nested Path Support**: `Lib.State` now supports dot-notation for IDs (e.g., `GeneralSettings.hide`), allowing settings to be mapped directly to nested database tables.
 - **Checkbox Inversion**: Added `invertValue` property to checkboxes, useful for "hide" style settings where the checkbox represents the opposite of the boolean value.
 - **Callback Support**: Added `onChange` callback support for `checkbox` and `slider` widgets to allow for real-time reactions and feedback.
@@ -13,10 +27,10 @@
 
 ### Changed
 - **Asset Resolution**: `ConfigTest.lua` now utilizes the `Lib.Media` helper for more robust asset pathing, ensuring correct icon rendering in different project environments.
-- **PNG Support**: Standardized on `.png` extensions for external assets to ensure proper rendering via `SetTexture` in modern WoW clients.
 - **Renderer Optimization**: widgets now store `rawText` to allow for re-processing with new theme colors when the active theme is changed, ensuring inline colors remain accurate.
 
 ### Fixed
+- **Checkbox Sizing:** Fixed a regression where `checkbox` and `colorpicker` widgets would stretch to fill the column width instead of maintaining their fixed 30x30 visual size.
 - **Layout Alignment**: Refactored the internal rendering engine to generically calculate label dimensions. This resolves alignment issues where widgets like `editbox`, `dropdown`, and `media` were shifted due to uncalculated top label offsets.
 - **Side Label Measurements**: Improved width calculations for widgets with side labels (`checkbox`, `colorpicker`) to prevent layout clumping.
 - **State Initialization**: Simplified `State:Initialize` and `State:Revert` to leverage the new deep-access logic and prevent redundant table copies.
