@@ -51,7 +51,7 @@ function Config:BuildSchemas()
       {
         type = "about",
         icon = "Interface\\AddOns\\NoobTaco-GotOne\\Media\\Textures\\noobtaco_gotone_logo.tga",
-        title = "|cff33ff99NoobTaco|r GotOne",
+        title = "|cffD78144NoobTaco|r|cffF8F9FAGotOne|r",
         version = version,
         description = "Audio-only collection notifications.\n\nNever miss a collection item again!",
         links = {
@@ -213,11 +213,11 @@ function Config:Initialize()
   self:BuildSchemas()
 
   local canvas = CreateFrame("Frame", nil, UIParent)
-  canvas.name = "NoobTaco GotOne"
+  canvas.name = "NoobTaco|cffF8F9FAGotOne|r"
   self.canvas = canvas
 
   if Settings and Settings.RegisterCanvasLayoutCategory then
-    self.category = Settings.RegisterCanvasLayoutCategory(canvas, "NoobTaco GotOne")
+    self.category = Settings.RegisterCanvasLayoutCategory(canvas, "|cffD78144NoobTaco|r|cffF8F9FAGotOne|r")
     Settings.RegisterAddOnCategory(self.category)
 
     local hasRenderedOnce = false
@@ -264,7 +264,7 @@ f:SetScript("OnEvent", function()
     if args == "" then
       Config:Toggle()
     elseif args == "test" then
-      addon.Print("|chighlight|NoobTaco|r GotOne: Testing all sounds...")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Testing all sounds...")
       if addon.CollectionNotifications then
         addon.CollectionNotifications.PlayNotificationSound("soundPet", true)
         C_Timer.After(1, function() addon.CollectionNotifications.PlayNotificationSound("soundMount", true) end)
@@ -272,41 +272,41 @@ f:SetScript("OnEvent", function()
         C_Timer.After(3, function() addon.CollectionNotifications.PlayNotificationSound("soundTransmog", true) end)
       end
     elseif args == "testpet" then
-      addon.Print("|chighlight|NoobTaco|r GotOne: Testing pet notification...")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Testing pet notification...")
       if addon.CollectionNotifications then
         addon.CollectionNotifications.PlayNotificationSound("soundPet", true)
         if addon.CollectionNotifications.GetSetting("showMessages") then
-          addon.Print("|chighlight|NoobTaco|r GotOne: New pet species collected: |csuccess|Test Pet|r")
+          addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: New pet species collected: |csuccess|Test Pet|r")
         end
       end
     elseif args == "testmount" then
-      addon.Print("|chighlight|NoobTaco|r GotOne: Testing mount notification...")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Testing mount notification...")
       if addon.CollectionNotifications then
         addon.CollectionNotifications.PlayNotificationSound("soundMount", true)
         if addon.CollectionNotifications.GetSetting("showMessages") then
-          addon.Print("|chighlight|NoobTaco|r GotOne: New mount collected: |csuccess|Test Mount|r")
+          addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: New mount collected: |csuccess|Test Mount|r")
         end
       end
     elseif args == "testtoy" then
-      addon.Print("|chighlight|NoobTaco|r GotOne: Testing toy notification...")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Testing toy notification...")
       if addon.CollectionNotifications then
         addon.CollectionNotifications.PlayNotificationSound("soundToy", true)
         if addon.CollectionNotifications.GetSetting("showMessages") then
-          addon.Print("|chighlight|NoobTaco|r GotOne: New toy collected: |csuccess|Test Toy|r")
+          addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: New toy collected: |csuccess|Test Toy|r")
         end
       end
     elseif args == "testtransmog" then
-      addon.Print("|chighlight|NoobTaco|r GotOne: Testing transmog notification...")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Testing transmog notification...")
       if addon.CollectionNotifications then
         addon.CollectionNotifications.PlayNotificationSound("soundTransmog", true)
         if addon.CollectionNotifications.GetSetting("showMessages") then
-          addon.Print("|chighlight|NoobTaco|r GotOne: New transmog collected: |csuccess|Test Transmog Item|r")
+          addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: New transmog collected: |csuccess|Test Transmog Item|r")
         end
       end
     elseif args == "status" then
       if addon.CollectionNotifications then
         local GetSetting = addon.CollectionNotifications.GetSetting
-        addon.Print("|chighlight|NoobTaco|r GotOne Status:")
+        addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r Status:")
         addon.Print("  Enabled: " .. (GetSetting("enabled") and "|csuccess|Yes|r" or "|cerror|No|r"))
         addon.Print("  Pets: " .. (GetSetting("newPet") and "|csuccess|Yes|r" or "|cerror|No|r"))
         addon.Print("  Mounts: " .. (GetSetting("newMount") and "|csuccess|Yes|r" or "|cerror|No|r"))
@@ -314,7 +314,7 @@ f:SetScript("OnEvent", function()
         addon.Print("  Transmog: " .. (GetSetting("newTransmog") and "|csuccess|Yes|r" or "|cerror|No|r"))
       end
     else
-      addon.Print("|chighlight|NoobTaco|r GotOne commands:")
+      addon.Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r commands:")
       addon.Print("  |cinfo|/ntgo|r - Open configuration panel")
       addon.Print("  |cinfo|/ntgo test|r - Test all notification sounds")
       addon.Print("  |cinfo|/ntgo testpet|r - Test pet notification")

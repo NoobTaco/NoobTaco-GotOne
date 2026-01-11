@@ -1,5 +1,5 @@
 ## Interface: 120000, 110100, 110007, 110005, 110002
-## Title: |cFFD78144NoobTaco|r GotOne
+## Title: |cffD78144NoobTaco|r|cffF8F9FAGotOne|r
 ## Notes: Audio-only collection notifications.
 ## Author: NoobTaco
 ## Version: @project-version@

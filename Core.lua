@@ -34,7 +34,7 @@ function NoobTacoGotOne_OnAddonCompartmentClick(_, buttonName)
       local current = NoobTacoGotOneDB.CollectionNotifications.enabled
       NoobTacoGotOneDB.CollectionNotifications.enabled = not current
       local status = (not current) and "|csuccess|Enabled|r" or "|cerror|Disabled|r"
-      Print("|chighlight|NoobTaco|r GotOne: Collection Notifications " .. status)
+      Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r: Collection Notifications " .. status)
     end
   end
 end
@@ -42,12 +42,12 @@ end
 function NoobTacoGotOne_OnAddonCompartmentEnter(_, menuButtonFrame)
   local title, tip1, tip2, tip3
   if Lib and Lib.Theme and Lib.Theme.ProcessText then
-    title = Lib.Theme:ProcessText("|chighlight|NoobTaco|r GotOne")
+    title = Lib.Theme:ProcessText("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r")
     tip1 = Lib.Theme:ProcessText("Audio-only collection notifications")
     tip2 = Lib.Theme:ProcessText("Left-click: Open configuration")
     tip3 = Lib.Theme:ProcessText("Right-click: Toggle notifications")
   else
-    title = "|cffD78144NoobTaco|r GotOne"
+    title = "|cffD78144NoobTaco|r|cffF8F9FAGotOne|r"
     tip1 = "Audio-only collection notifications"
     tip2 = "Left-click: Open configuration"
     tip3 = "Right-click: Toggle notifications"
@@ -73,7 +73,7 @@ local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, name)
   if name == addonName then
-    Print("|chighlight|NoobTaco|r GotOne loaded.")
+    Print("|chighlight|NoobTaco|r|cffF8F9FAGotOne|r loaded.")
     self:UnregisterEvent(event)
   end
 end)
