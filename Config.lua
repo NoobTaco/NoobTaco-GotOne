@@ -55,7 +55,28 @@ function Config:BuildSchemas()
         version = version,
         description = "Audio-only collection notifications.\n\nNever miss a collection item again!",
         links = {
-          { label = "GitHub", url = "https://github.com/NoobTaco/NoobTaco-GotOne" },
+          {
+            label = "GitHub",
+            url = "https://github.com/NoobTaco/NoobTaco-GotOne",
+            onClick = function()
+              StaticPopupDialogs["NOOBTACOUI_GENERIC_COPY"] = {
+                text = "CTRL+C to copy the link: https://github.com/NoobTaco/NoobTaco-GotOne",
+                button1 = "Close",
+                hasEditBox = true,
+                editBoxWidth = 400,
+                OnShow = function(self)
+                  self.EditBox:SetText("https://github.com/NoobTaco/NoobTaco-GotOne")
+                  self.EditBox:SetFocus()
+                  self.EditBox:HighlightText()
+                end,
+                timeout = 0,
+                whileDead = true,
+                hideOnEscape = true,
+                preferredIndex = 3,
+              }
+              StaticPopup_Show("NOOBTACOUI_GENERIC_COPY")
+            end
+          },
         }
       },
       { type = "header", label = "Instructions" },

@@ -1221,7 +1221,9 @@ function ConfigRenderer:RenderItem(item, parent, cursor)
         end
 
         btn:SetScript("OnClick", function()
-          if link.url then
+          if link.onClick then
+            link.onClick()
+          elseif link.url then
             print("Opening Link: " .. link.url)
           end
         end)
