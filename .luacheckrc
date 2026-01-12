@@ -12,7 +12,8 @@ globals = {
     "NoobTacoGotOne_ToggleSettings",
     "NoobTacoGotOne_OnAddonCompartmentClick",
     "NoobTacoGotOne_OnAddonCompartmentEnter",
-    "NoobTacoGotOne_OnAddonCompartmentLeave"
+    "NoobTacoGotOne_OnAddonCompartmentLeave",
+    "StaticPopupDialogs",
 }
 read_globals = {
     "LibStub",
@@ -53,7 +54,8 @@ read_globals = {
     "GetAddOnMetadata",
     "Settings",
     "InterfaceOptions_AddCategory",
-    "InterfaceOptionsFrame_OpenToCategory"
+    "InterfaceOptionsFrame_OpenToCategory",
+    "StaticPopup_Show",
 }
 
 -- Exclude test files, installed rock dependencies, and vendored libraries
@@ -70,7 +72,11 @@ max_line_length = 200
 -- Suppress specific warnings
 -- We have fixed most shadownig and unused vars, so this list is minimal.
 ignore = {
-    "212/self", -- Methods defined with : implicitly have self, but we might not use it.
-    "212/_",    -- Allow underscore as unused argument
-    "211/_",    -- Allow underscore as unused variable
+    "112", -- Mutating undefined variable (handled by globals)
+    "113", -- Accessing undefined variable (handled by globals above)
+    "141", -- Setting non-standard global variable (needed for WoW addon globals)
+    "211", -- Unused variable
+    "212", -- Unused argument
+    "431", -- Shadowing upvalue argument (very common in WoW addon callbacks)
+    "432", -- Shadowing upvalue
 }

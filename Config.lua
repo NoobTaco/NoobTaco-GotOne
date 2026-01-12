@@ -64,10 +64,10 @@ function Config:BuildSchemas()
                 button1 = "Close",
                 hasEditBox = true,
                 editBoxWidth = 400,
-                OnShow = function(self)
-                  self.EditBox:SetText("https://ko-fi.com/mikenorton")
-                  self.EditBox:SetFocus()
-                  self.EditBox:HighlightText()
+                OnShow = function(frame)
+                  frame.EditBox:SetText("https://ko-fi.com/mikenorton")
+                  frame.EditBox:SetFocus()
+                  frame.EditBox:HighlightText()
                 end,
                 timeout = 0,
                 whileDead = true,
@@ -86,10 +86,10 @@ function Config:BuildSchemas()
                 button1 = "Close",
                 hasEditBox = true,
                 editBoxWidth = 400,
-                OnShow = function(self)
-                  self.EditBox:SetText("https://github.com/NoobTaco/NoobTaco-GotOne")
-                  self.EditBox:SetFocus()
-                  self.EditBox:HighlightText()
+                OnShow = function(frame)
+                  frame.EditBox:SetText("https://github.com/NoobTaco/NoobTaco-GotOne")
+                  frame.EditBox:SetFocus()
+                  frame.EditBox:HighlightText()
                 end,
                 timeout = 0,
                 whileDead = true,
