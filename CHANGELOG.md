@@ -1,5 +1,11 @@
 # NoobTaco GotOne Changelog
 
+## [1.1.2] - 2026-01-11
+### Changed
+- **Accessibility**: Increased font weight of the body font in the configuration menu to improve readability for users with poor eyesight.
+- **Themes**: Updated default typography to use `Poppins-Medium` for 'Normal' and `Poppins-Bold` for 'Bold' weights.
+- **Library Sync**: Synchronized `NoobTaco-Config` with the latest changes in the core suite.
+
 ## [1.1.1] - 2026-01-11
 ### Changed
 - **Library Sync**: Synchronized `NoobTaco-Config` with the latest changes in the core suite.
