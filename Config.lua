@@ -56,6 +56,28 @@ function Config:BuildSchemas()
         description = "Audio-only collection notifications.\n\nNever miss a collection item again!",
         links = {
           {
+            label = "Donate",
+            url = "https://ko-fi.com/mikenorton",
+            onClick = function()
+              StaticPopupDialogs["NOOBTACOUI_GENERIC_COPY"] = {
+                text = "CTRL+C to copy the link: https://ko-fi.com/mikenorton",
+                button1 = "Close",
+                hasEditBox = true,
+                editBoxWidth = 400,
+                OnShow = function(self)
+                  self.EditBox:SetText("https://ko-fi.com/mikenorton")
+                  self.EditBox:SetFocus()
+                  self.EditBox:HighlightText()
+                end,
+                timeout = 0,
+                whileDead = true,
+                hideOnEscape = true,
+                preferredIndex = 3,
+              }
+              StaticPopup_Show("NOOBTACOUI_GENERIC_COPY")
+            end
+          },
+          {
             label = "GitHub",
             url = "https://github.com/NoobTaco/NoobTaco-GotOne",
             onClick = function()

@@ -3,7 +3,7 @@
 ## [1.1.1] - 2026-01-11
 ### Changed
 - **Library Sync**: Synchronized `NoobTaco-Config` with the latest changes in the core suite.
-- **Branding**: Enhanced support buttons (GitHub) to open a copy-paste dialog when clicked for easier link sharing.
+- **Branding**: Enhanced support buttons (Donate, GitHub) to open a copy-paste dialog when clicked for easier link sharing.
 
 ## [1.1.0] - 2026-01-11
 ### Changed
