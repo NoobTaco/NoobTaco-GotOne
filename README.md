@@ -1,5 +1,7 @@
 # NoobTaco GotOne
 
+[![CI Status](https://img.shields.io/github/actions/workflow/status/NoobTaco/NoobTaco-GotOne/ci.yml?style=for-the-badge&logo=github&logoColor=white&label=CI%20Status)](https://github.com/NoobTaco/NoobTaco-GotOne/actions/workflows/ci.yml) [![Release Status](https://img.shields.io/github/actions/workflow/status/NoobTaco/NoobTaco-GotOne/release.yml?style=for-the-badge&logo=github&logoColor=white&label=Release%20Status)](https://github.com/NoobTaco/NoobTaco-GotOne/actions/workflows/release.yml) [![Discord](https://img.shields.io/badge/Discord-Taco%20Labs-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/Mby5KwkCH9)
+
 **Your Collection, Your Soundtrack.**
 
 **NoobTaco GotOne** is a high-performance, audio-only notification system for World of Warcraft collectors. It delivers the satisfying "dopamine hit" of adding to your collection—mounts, pets, toys, and transmog—without touching your UI.
@@ -56,3 +58,9 @@ Most collection addons rely on heavy databases and complex UI overlays that clut
 
 * **Main UI:** [NoobTacoUI](https://www.curseforge.com/wow/addons/noobtacoui)
 * **GitHub:** [Report Issues / Contribute](https://github.com/NoobTaco/NoobTaco-GotOne)
+
+## ❤️ Support
+
+If you're looking for help, have questions, or want to join the community, join us on Discord!
+
+[![Discord](https://img.shields.io/badge/Discord-Taco%20Labs-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/Mby5KwkCH9)
