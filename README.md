@@ -58,6 +58,13 @@ Most collection addons rely on heavy databases and complex UI overlays that clut
 * **Main UI:** [NoobTacoUI](https://www.curseforge.com/wow/addons/noobtacoui)
 * **GitHub:** [Report Issues / Contribute](https://github.com/NoobTaco/NoobTaco-GotOne)
 
+---
+
+## 📄 AI Usage
+
+See [AI_USAGE.md](https://github.com/NoobTaco/NoobTaco-GotOne/blob/main/AI_USAGE.md) for more information.
+
+
 ## ❤️ Support
 
 If you're looking for help, have questions, or want to join the community, join us on Discord!
